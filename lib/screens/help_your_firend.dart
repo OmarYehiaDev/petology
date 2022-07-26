@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:petology/shared/appbar_components.dart';
+import 'package:petology/shared/default_drop_down.dart';
 import 'package:petology/shared/footer.dart';
 
 class HelpYourFriend extends StatelessWidget {
@@ -67,89 +68,95 @@ class HelpYourFriend extends StatelessWidget {
                               const SizedBox(
                                 height: 30,
                               ),
-                              TextFormField(
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0),
-                                    ),
-                                  ),
-                                  labelText: 'Category',
-                                ),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    if (kDebugMode) {
-                                      print('Category must not be empty');
-                                    }
-                                  }
-                                  return null;
-                                },
-                              ),
-                              const SizedBox(
+                              DefaultDropDownButton(
+                                text: 'Category',
+                                items: const ['dogs','cats'],
+                                validateText: 'category must not be empty',),
+                              SizedBox(
                                 height: 30,
                               ),
                               const Align(
                                 alignment: AlignmentDirectional.bottomStart,
-                                child: Text(
-                                  'Detect your current location',
-                                  style: TextStyle(
-                                    color: Colors.brown,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 15.0, top: 20),
+                                  child: Text(
+                                    'Detect your current location',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.brown,
+                                    ),
                                   ),
                                 ),
                               ),
-                              TextFormField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: const OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0),
-                                    ),
-                                  ),
-                                  labelText: 'Location',
-                                  suffixIcon: IconButton(
-                                    onPressed: () {},
-                                    icon: Align(
-                                      widthFactor: 1.0,
-                                      heightFactor: 1.0,
-                                      child: Icon(
-                                        Icons.location_on,
-                                        color: HexColor("#492F24"),
+                              Container(
+                                margin: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),offset: const Offset(0,2),
+                                          blurRadius: 2
+                                      )
+                                    ]
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20,right: 3 ),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      labelText: 'Location',
+                                      suffixIcon: IconButton(
+                                        onPressed: () {},
+                                        icon: Align(
+                                          widthFactor: 1.0,
+                                          heightFactor: 1.0,
+                                          child: Icon(Icons.location_on,
+                                            color: HexColor("#492F24"),
+                                          ),
+                                        ),
                                       ),
                                     ),
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        print('location must not be empty');
+                                      }
+                                      return null;
+                                    },
                                   ),
                                 ),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    if (kDebugMode) {
-                                      print('Location must not be empty');
-                                    }
-                                  }
-                                  return null;
-                                },
                               ),
                               const SizedBox(
                                 height: 30,
                               ),
-                              TextFormField(
-                                obscureText: true,
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0),
-                                    ),
-                                  ),
-                                  labelText: 'Phone',
+                              Container(
+                                margin: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),offset: const Offset(0,2),
+                                          blurRadius: 2
+                                      )
+                                    ]
                                 ),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    if (kDebugMode) {
-                                      print('Phone must not be empty');
-                                    }
-                                  }
-                                  return null;
-                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 20,right: 3 ),
+                                  child: TextFormField(
+                                    keyboardType:TextInputType.phone ,
+                                    decoration: const InputDecoration(
+                                      border: InputBorder.none,
+                                      labelText: 'Phone Number',
+                                    ),
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        print('Phone Number must not be empty');
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ),
                               ),
                               const SizedBox(
                                 height: 30,

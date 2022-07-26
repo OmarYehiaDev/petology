@@ -6,8 +6,8 @@ import 'package:petology/shared/footer.dart';
 import 'package:petology/utils/navigation.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
-  bool isSelected = false;
+   LoginScreen({Key? key}) : super(key: key);
+  bool isSelected=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,8 +111,7 @@ class LoginScreen extends StatelessWidget {
                 child: Stack(
                   alignment: AlignmentDirectional.topCenter,
                   children: [
-                    Image.asset(
-                      'assets/images/dog_logo.png',
+                    Image.asset('assets/images/dog_logo.png',
                       height: 150,
                       width: 150,
                     ),
@@ -125,8 +124,7 @@ class LoginScreen extends StatelessWidget {
                           side: BorderSide(
                             color: HexColor("#180701"),
                           ),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(12)),
+                          borderRadius: const BorderRadius.all(Radius.circular(12)),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -191,11 +189,12 @@ class LoginScreen extends StatelessWidget {
                                     color: HexColor("#FFE3C5"),
                                   ),
                                 ),
-                                onPressed: () {
+                                onPressed: ()
+                                {
                                   AppNavigator.customNavigator(
-                                    context: context,
-                                    screen: HomeScreen(),
-                                    finish: false,
+                                      context: context,
+                                      screen: HomeScreen(),
+                                      finish: false,
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -221,121 +220,103 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Row(children: [
-                                Expanded(
-                                  child: new Container(
-                                      margin: const EdgeInsets.only(
-                                          left: 10, right: 15),
-                                      child: Divider(
-                                        color: Colors.black,
-                                        height: 50,
-                                      )),
-                                ),
-                                Text(
-                                  "Or",
-                                  style: TextStyle(
-                                    color: HexColor("#180701"),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: new Container(
-                                      margin: const EdgeInsets.only(
-                                          left: 15, right: 10),
-                                      child: Divider(
+                              Row(
+                                  children:
+                                  [
+                                    Expanded(
+                                      child: new Container(
+                                          margin:
+                                          const EdgeInsets.only(left: 10, right: 15),
+                                          child: Divider(
+                                            color: Colors.black,
+                                            height: 50,
+                                          )),
+                                    ),
+                                    Text("Or",
+                                      style: TextStyle(
                                         color: HexColor("#180701"),
-                                        height: 50,
-                                      )),
-                                ),
-                              ]),
+                                      ),),
+                                    Expanded(
+                                      child: new Container(
+                                          margin:
+                                          const EdgeInsets.only(left: 15, right: 10),
+                                          child: Divider(
+                                            color: HexColor("#180701"),
+                                            height: 50,
+                                          )),
+                                    ),
+                                  ]),
                               Padding(
                                 padding: const EdgeInsets.all(23.0),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
                                       child: ElevatedButton(
                                         style: ButtonStyle(
                                             shape: MaterialStateProperty.all(
                                                 RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15))),
+                                                    borderRadius: BorderRadius.circular(15))),
                                             foregroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.black),
+                                            MaterialStateProperty.all(Colors.black),
                                             padding: MaterialStateProperty.all(
                                                 const EdgeInsets.all(15)),
                                             backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.deepPurple),
-                                            elevation:
-                                                MaterialStateProperty.all(0)),
+                                            MaterialStateProperty.all(Colors.deepPurple),
+                                            elevation: MaterialStateProperty.all(0)),
                                         onHover: (v) {},
                                         onLongPress: () {},
                                         onPressed: () {},
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.center,
                                           children: const [
                                             Icon(
                                               Icons.facebook,
                                               color: Colors.white,
                                             ),
-                                            SizedBox(
-                                              width: 30,
-                                            ),
+                                            SizedBox(width: 30,),
                                             Text(
                                               'Facebook',
-                                              style: TextStyle(
-                                                  color: Colors.white),
+                                              style: TextStyle(color: Colors.white),
                                             ),
                                           ],
+
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 40,
-                                    ),
+                                    const SizedBox(width: 40,),
                                     Expanded(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
+                                            borderRadius: BorderRadius.circular(15),
                                             border: Border.all(
-                                                color: Colors.grey,
-                                                width: 1.5)),
+                                                color: Colors.grey, width: 1.5)),
                                         child: ElevatedButton(
                                             style: ButtonStyle(
                                                 shape: MaterialStateProperty.all(
                                                     RoundedRectangleBorder(
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(15))),
+                                                        BorderRadius.circular(15))),
                                                 foregroundColor:
-                                                    MaterialStateProperty.all(
-                                                        Colors.black),
+                                                MaterialStateProperty.all(
+                                                    Colors.black),
                                                 padding: MaterialStateProperty.all(
                                                     const EdgeInsets.all(15)),
                                                 backgroundColor:
-                                                    MaterialStateProperty.all(
-                                                        Colors.white),
-                                                elevation:
-                                                    MaterialStateProperty.all(
-                                                        0)),
+                                                MaterialStateProperty.all(
+                                                    Colors.white),
+                                                elevation: MaterialStateProperty.all(0)),
                                             onHover: (v) {},
                                             onLongPress: () {},
                                             onPressed: () {},
                                             child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
                                               children: const [
                                                 Icon(
                                                   Icons.g_translate,
                                                 ),
-                                                SizedBox(
-                                                  width: 30,
-                                                ),
+
+                                                SizedBox(width: 30,),
                                                 Text('Google'),
                                               ],
                                             )),
@@ -345,19 +326,18 @@ class LoginScreen extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: () {
+                                onPressed: ()
+                                {
                                   AppNavigator.customNavigator(
-                                    context: context,
-                                    screen: SignUpScreen(),
-                                    finish: false,
-                                  );
+                                  context: context,
+                                  screen: SignUpScreen(),
+                                  finish: false,
+                                );
                                 },
-                                child: Text(
-                                  'Didnt have an account? sign up',
+                                child: Text('Didnt have an account? sign up',
                                   style: TextStyle(
                                     color: HexColor("#492f24"),
-                                  ),
-                                ),
+                                  ),),
                               ),
                             ],
                           ),

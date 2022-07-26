@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:petology/screens/home_screen_components/fifth_container.dart';
 import 'package:petology/screens/home_screen_components/first_container.dart';
 import 'package:petology/screens/home_screen_components/fourth_containter.dart';
