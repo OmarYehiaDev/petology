@@ -3,7 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:petology/screens/home_screen.dart';
 import 'package:petology/screens/sign_up_screen.dart';
 import 'package:petology/shared/footer.dart';
-import 'package:petology/utlis/navigation.dart';
+import 'package:petology/utils/navigation.dart';
 
 class LoginScreen extends StatelessWidget {
    LoginScreen({Key? key}) : super(key: key);
