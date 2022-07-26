@@ -5,13 +5,18 @@ class DefaultDropDownButton extends StatefulWidget {
   final String text;
   final String validateText;
   final List<String> items;
-   DefaultDropDownButton({required this.text,required this.validateText,required this.items,Key? key}) : super(key: key);
+  const DefaultDropDownButton({
+    required this.text,
+    required this.validateText,
+    required this.items,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<DefaultDropDownButton> createState() => _DefaultDropDownButtonState();
 }
-class _DefaultDropDownButtonState extends State<DefaultDropDownButton> {
 
+class _DefaultDropDownButtonState extends State<DefaultDropDownButton> {
   String? selectedValue;
 
   @override
@@ -27,7 +32,7 @@ class _DefaultDropDownButtonState extends State<DefaultDropDownButton> {
           contentPadding: EdgeInsets.zero,
         ),
         isExpanded: true,
-        hint:  Text(
+        hint: Text(
           widget.text,
           style: TextStyle(
             fontSize: 14,
@@ -45,14 +50,14 @@ class _DefaultDropDownButtonState extends State<DefaultDropDownButton> {
         ),
         items: widget.items
             .map((item) => DropdownMenuItem<String>(
-          value: item,
-          child: Text(
-            item,
-            style:  TextStyle(
-              fontSize: 14,
-            ),
-          ),
-        ))
+                  value: item,
+                  child: Text(
+                    item,
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                ))
             .toList(),
         validator: (value) {
           if (value == null) {
@@ -70,4 +75,3 @@ class _DefaultDropDownButtonState extends State<DefaultDropDownButton> {
     );
   }
 }
-

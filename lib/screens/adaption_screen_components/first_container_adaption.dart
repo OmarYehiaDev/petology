@@ -11,7 +11,7 @@ class FirstContainerAdaptation extends StatefulWidget {
 class _FirstContainerAdaptationState extends State<FirstContainerAdaptation> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       width: double.infinity,
       child: Column(
@@ -40,17 +40,10 @@ class _FirstContainerAdaptationState extends State<FirstContainerAdaptation> {
                         color: HexColor('#492F24'),
                       )
                       ,),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     ElevatedButton(
-                        child: Text(
-                          "Read more",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: HexColor("#FFE3C5"),
-                          ),
-                        ),
                         onPressed: () {},
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -61,12 +54,19 @@ class _FirstContainerAdaptationState extends State<FirstContainerAdaptation> {
                                     borderRadius: BorderRadius.circular(18.0)
                                 )
                             )
+                        ),
+                        child: Text(
+                          "Read more",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: HexColor("#FFE3C5"),
+                          ),
                         )
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Container(
@@ -90,17 +90,10 @@ class _FirstContainerAdaptationState extends State<FirstContainerAdaptation> {
                         color: HexColor('#492F24'),
                       )
                       ,),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     ElevatedButton(
-                        child: Text(
-                          "Read more",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: HexColor("#FFE3C5"),
-                          ),
-                        ),
                         onPressed: () {},
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -111,12 +104,19 @@ class _FirstContainerAdaptationState extends State<FirstContainerAdaptation> {
                                     borderRadius: BorderRadius.circular(18.0),
                                 )
                             )
+                        ),
+                        child: Text(
+                          "Read more",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: HexColor("#FFE3C5"),
+                          ),
                         )
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Container(
@@ -140,17 +140,10 @@ class _FirstContainerAdaptationState extends State<FirstContainerAdaptation> {
                         color: HexColor('#492F24'),
                       )
                       ,),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     ElevatedButton(
-                        child: Text(
-                          "Read more",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: HexColor("#FFE3C5"),
-                          ),
-                        ),
                         onPressed: () {},
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -161,6 +154,13 @@ class _FirstContainerAdaptationState extends State<FirstContainerAdaptation> {
                                     borderRadius: BorderRadius.circular(18.0)
                                 )
                             )
+                        ),
+                        child: Text(
+                          "Read more",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: HexColor("#FFE3C5"),
+                          ),
                         )
                     ),
                   ],

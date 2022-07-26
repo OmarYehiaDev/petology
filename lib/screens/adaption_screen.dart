@@ -6,19 +6,18 @@ import 'package:petology/shared/default_drop_down.dart';
 import 'package:petology/shared/footer.dart';
 
 class AdaptionScreen extends StatefulWidget {
-  AdaptionScreen({Key? key}) : super(key: key);
+  const AdaptionScreen({Key? key}) : super(key: key);
 
   @override
   State<AdaptionScreen> createState() => _AdaptionScreenState();
 }
 
 class _AdaptionScreenState extends State<AdaptionScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
+      appBar: const PreferredSize(
         preferredSize: Size(double.infinity, 50),
         child: AppBarComponents(),
       ),
@@ -30,14 +29,17 @@ class _AdaptionScreenState extends State<AdaptionScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  buildColumn(name: 'Bread',Drop: ['1','2','3'], ),
-                  buildColumn(name: 'Age',Drop: ['4','5','6']),
-                  buildColumn(name: 'Size',Drop: ['7','8','9']),
-                  buildColumn(name: 'Good with',Drop: ['10','11','12']),
+                  buildColumn(
+                    name: 'Bread',
+                    drop: ['1', '2', '3'],
+                  ),
+                  buildColumn(name: 'Age', drop: ['4', '5', '6']),
+                  buildColumn(name: 'Size', drop: ['7', '8', '9']),
+                  buildColumn(name: 'Good with', drop: ['10', '11', '12']),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -45,23 +47,24 @@ class _AdaptionScreenState extends State<AdaptionScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  buildColumn(name: 'Gender', Drop: ['Male','Female']),
+                  buildColumn(name: 'Gender', drop: ['Male', 'Female']),
                   //SizedBox(width: 20,),
-                  buildColumn(name: 'Color',Drop: ['grey','black','white']),
+                  buildColumn(name: 'Color', drop: ['grey', 'black', 'white']),
                   //  SizedBox(width: 20,),
-                  buildColumn(name: 'Hair Length',Drop: ['19','20','21']),
+                  buildColumn(name: 'Hair Length', drop: ['19', '20', '21']),
                   // SizedBox(width: 20,),
-                  buildColumn(name: 'Care & Behavior',Drop: ['22','23','24']),
+                  buildColumn(
+                      name: 'Care & Behavior', drop: ['22', '23', '24']),
                   //   SizedBox(width: 20,)
                 ],
               ),
             ),
-            FirstContainerAdaptation(),
-            SizedBox(
+            const FirstContainerAdaptation(),
+            const SizedBox(
               height: 60,
             ),
-            FirstContainerAdaptation(),
-            SizedBox(
+            const FirstContainerAdaptation(),
+            const SizedBox(
               height: 30,
             ),
             TextButton(
@@ -73,19 +76,19 @@ class _AdaptionScreenState extends State<AdaptionScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Footer(),
+            const Footer(),
           ],
         ),
       ),
     );
   }
 
-  Column buildColumn( {
+  Column buildColumn({
     required String name,
-    required List<String> Drop,
+    required List<String> drop,
   }) {
     return Column(
       children: [
@@ -97,19 +100,23 @@ class _AdaptionScreenState extends State<AdaptionScreen> {
             color: HexColor('#492F24'),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
           width: 200,
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.horizontal(
-                  left: Radius.circular(20), right: Radius.circular(20))),
+          decoration: const BoxDecoration(
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.horizontal(
+              left: Radius.circular(20),
+              right: Radius.circular(20),
+            ),
+          ),
           child: DefaultDropDownButton(
             text: name,
-            items: Drop,
-            validateText: 'must not be empty',),
+            items: drop,
+            validateText: 'must not be empty',
+          ),
         ),
       ],
     );

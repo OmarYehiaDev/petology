@@ -1,16 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class AppBarComponents extends StatelessWidget {
-   AppBarComponents({Key? key}) : super(key: key);
-  bool isSelected=false;
+  const AppBarComponents({Key? key}) : super(key: key);
+  final bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: HexColor("#56392D"),
       elevation: 0,
-      title: Image.asset('assets/images/Petology.png',
+      title: Image.asset(
+        'assets/images/Petology.png',
         width: 110,
         height: 110,
       ),

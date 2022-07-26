@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:petology/shared/appbar_components.dart';
@@ -10,7 +11,7 @@ class HelpYourFriend extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
+      appBar: const PreferredSize(
         preferredSize: Size(double.infinity, 50),
         child: AppBarComponents(),
       ),
@@ -21,7 +22,8 @@ class HelpYourFriend extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Image.asset('assets/images/Icon material-pets left hand.png',
+                  Image.asset(
+                    'assets/images/Icon material-pets left hand.png',
                     width: 200,
                     height: 200,
                     color: HexColor('#FFE3C5'),
@@ -38,7 +40,8 @@ class HelpYourFriend extends StatelessWidget {
                           side: BorderSide(
                             color: HexColor("#180701"),
                           ),
-                          borderRadius: const BorderRadius.all(Radius.circular(12)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(12)),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -53,52 +56,55 @@ class HelpYourFriend extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
-                              Image.asset('assets/images/Icon camera.png',
+                              Image.asset(
+                                'assets/images/Icon camera.png',
                                 width: 50,
                                 height: 50,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
                                     ),
                                   ),
                                   labelText: 'Category',
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    print('Category must not be empty');
+                                    if (kDebugMode) {
+                                      print('Category must not be empty');
+                                    }
                                   }
                                   return null;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
-                               Align(
-                                 alignment: AlignmentDirectional.bottomStart,
-                                 child: Text(
+                              const Align(
+                                alignment: AlignmentDirectional.bottomStart,
+                                child: Text(
                                   'Detect your current location',
                                   style: TextStyle(
                                     color: Colors.brown,
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),
+                                ),
                               ),
-                               ),
                               TextFormField(
                                 obscureText: true,
                                 decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
+                                  border: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
                                     ),
                                   ),
                                   labelText: 'Location',
@@ -107,7 +113,8 @@ class HelpYourFriend extends StatelessWidget {
                                     icon: Align(
                                       widthFactor: 1.0,
                                       heightFactor: 1.0,
-                                      child: Icon(Icons.location_on,
+                                      child: Icon(
+                                        Icons.location_on,
                                         color: HexColor("#492F24"),
                                       ),
                                     ),
@@ -115,35 +122,47 @@ class HelpYourFriend extends StatelessWidget {
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    print('Location must not be empty');
+                                    if (kDebugMode) {
+                                      print('Location must not be empty');
+                                    }
                                   }
                                   return null;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               TextFormField(
                                 obscureText: true,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
                                     ),
                                   ),
                                   labelText: 'Phone',
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    print('Phone must not be empty');
+                                    if (kDebugMode) {
+                                      print('Phone must not be empty');
+                                    }
                                   }
                                   return null;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  fixedSize: const Size(600, 50),
+                                  primary: HexColor("492F24"),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(32.0),
+                                  ),
+                                ),
                                 child: Text(
                                   "Send",
                                   style: TextStyle(
@@ -151,19 +170,19 @@ class HelpYourFriend extends StatelessWidget {
                                     color: HexColor("#FFE3C5"),
                                   ),
                                 ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(600, 50),
-                                  primary: HexColor("492F24"),
+                                  fixedSize: const Size(600, 50),
+                                  primary: HexColor("FFE3C5"),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(32.0),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              ElevatedButton(
                                 child: Text(
                                   "Call",
                                   style: TextStyle(
@@ -171,16 +190,8 @@ class HelpYourFriend extends StatelessWidget {
                                     color: HexColor("#492F24"),
                                   ),
                                 ),
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(600, 50),
-                                  primary: HexColor("FFE3C5"),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(32.0),
-                                  ),
-                                ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                             ],
@@ -191,10 +202,10 @@ class HelpYourFriend extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Footer(),
+              const Footer(),
             ],
           ),
         ),
