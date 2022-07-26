@@ -29,45 +29,45 @@ class LoginScreen extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'About us',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'Categories',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'Services',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'Request',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 450,
                 ),
                 ElevatedButton(
-                  child: Text("Sign up"),
+                  child: const Text("Sign up"),
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     primary: isSelected ? Colors.brown : Colors.white,
@@ -77,11 +77,11 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 ElevatedButton(
-                  child: Text(
+                  child: const Text(
                     "Login",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class LoginScreen extends StatelessWidget {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(
+                              const Text(
                                 'Login',
                                 style: TextStyle(
                                   color: Colors.brown,
@@ -139,14 +139,14 @@ class LoginScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               TextFormField(
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
                                     ),
                                   ),
                                   labelText: 'Email',
@@ -158,15 +158,15 @@ class LoginScreen extends StatelessWidget {
                                   return null;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               TextFormField(
                                 obscureText: true,
                                 decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
+                                  border: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
                                     ),
                                   ),
                                   labelText: 'Password',
@@ -178,7 +178,7 @@ class LoginScreen extends StatelessWidget {
                                   return null;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               ElevatedButton(
@@ -198,14 +198,14 @@ class LoginScreen extends StatelessWidget {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(600, 50),
+                                  fixedSize: const Size(600, 50),
                                   primary: HexColor("492F24"),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(32.0),
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Container(
@@ -227,7 +227,7 @@ class LoginScreen extends StatelessWidget {
                                       child: new Container(
                                           margin:
                                           const EdgeInsets.only(left: 10, right: 15),
-                                          child: Divider(
+                                          child: const Divider(
                                             color: Colors.black,
                                             height: 50,
                                           )),
@@ -347,10 +347,10 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Footer(),
+              const Footer(),
             ],
           ),
         ),
