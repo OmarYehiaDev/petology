@@ -3,7 +3,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:petology/shared/appbar_components.dart';
 import 'package:petology/shared/footer.dart';
 
-
 class HelpYourFriend extends StatelessWidget {
   const HelpYourFriend({Key? key}) : super(key: key);
 

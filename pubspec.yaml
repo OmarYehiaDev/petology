@@ -38,6 +38,7 @@ dependencies:
   getwidget: ^3.0.1
   mouse_parallax: ^1.1.0
   http: ^0.13.4
+  dropdown_button2: ^1.6.3
 
 dev_dependencies:
   flutter_test:
