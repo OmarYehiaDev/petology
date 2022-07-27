@@ -39,17 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(test),
             ElevatedButton(
               onPressed: () async {
-                Uint8List? bytesFromPicker =
-                    await ImagePickerWeb.getImageAsBytes();
-                String data = await api.makePetReq(
-                  1,
-                  "data:image/jpg;base64,${base64Encode(bytesFromPicker!)}",
-                  "location",
-                  "02266453925",
-                );
+                // Uint8List? bytesFromPicker =
+                //     await ImagePickerWeb.getImageAsBytes();
+                List<Pet> data = await api.getAllPets();
                 print(data);
                 setState(() {
-                  test = data;
+                  test = data[0].name;
                 });
               },
               child: Text("Test"),

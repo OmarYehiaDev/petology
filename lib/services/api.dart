@@ -151,15 +151,12 @@ class ApiService {
     return data;
   }
 
-  Future<String> addPet(
-    int categoryId,
-    String img,
-    String loc,
-    String phone,
+  Future<Pet> addPet(
+    Pet pet,
   ) async {
-    String data = "";
+    Pet? data;
     final http.Response response = await http.post(
-      Uri.parse(kRequestPet),
+      Uri.parse(kListPets),
       headers: {
         "accept": "application/json",
         "Content-Type": "application/json",
@@ -168,16 +165,64 @@ class ApiService {
       },
       body: json.encode(
         {
-          "categoryId": categoryId,
-          "imageBase64": img,
-          "location": loc,
-          "phoneNumber": phone,
+          "pet": {
+            "name": pet.name,
+            "image": pet.image,
+            "year": pet.year,
+            "month": pet.month,
+            "size": pet.size,
+            "breed": pet.breed,
+            "gender": pet.gender,
+            "hairLength": pet.hairLength,
+            "color": pet.color,
+            "careBehavior": pet.careBehavior,
+            "houseTrained": pet.houseTrained,
+            "description": pet.description,
+            "location": pet.location,
+            "phone": pet.phone,
+            "vaccinated": pet.vaccinated,
+            "categoryId": pet.categoryId,
+          },
         },
       ),
     );
     if (response.statusCode == 200) {
-      data = json.decode(response.body)["message"];
+      data = Pet.fromRawJson(response.body);
+    }
+    return data!;
+  }
+
+  Future<List<Pet>> getAllPets() async {
+    List<Pet> data = List<Pet>.empty();
+    final http.Response response = await http.get(
+      Uri.parse(kListPets),
+      headers: {
+        "accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization":
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjAsImVtYWlsIjoib21hcnlhaGlhdGF3Zmlla0BnbWFpbC5jb20iLCJpYXQiOjE2NTg5MTcyOTAsImV4cCI6MTY1OTAwMzY5MH0.BIBqEGsbzXu7PFYpsoH3R05JaXTG86pP0joHBvgwZE8",
+      },
+    );
+    if (response.statusCode == 200) {
+      data = decodePetsFromJson(response.body);
     }
     return data;
+  }
+
+  Future<Pet> getSpecficPets(int id) async {
+    Pet? data;
+    final http.Response response = await http.get(
+      Uri.parse("$kListPets/$id"),
+      headers: {
+        "accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization":
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjAsImVtYWlsIjoib21hcnlhaGlhdGF3Zmlla0BnbWFpbC5jb20iLCJpYXQiOjE2NTg5MTcyOTAsImV4cCI6MTY1OTAwMzY5MH0.BIBqEGsbzXu7PFYpsoH3R05JaXTG86pP0joHBvgwZE8",
+      },
+    );
+    if (response.statusCode == 200) {
+      data = Pet.fromRawJson(response.body);
+    }
+    return data!;
   }
 }
