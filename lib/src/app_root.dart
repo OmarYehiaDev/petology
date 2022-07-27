@@ -40,21 +40,12 @@ class _AppRootState extends State<AppRoot> {
             const AdaptionScreen(),
             // LoginScreen(),
             Positioned(
-              left: pointer.dx,
-              top: pointer.dy,
-              child: Container(
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(40),
-                  ),
-                  border: Border.all(
-                    width: 4,
-                    color: Colors.black,
-                    style: BorderStyle.solid,
-                  ),
-                ),
+              left: pointer.dx - 100,
+              top: pointer.dy - 100,
+              child: Image.asset(
+                'assets/images/cursor.png',
+                height: 30,
+                width: 50,
               ),
             ),
           ],
