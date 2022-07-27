@@ -16,8 +16,7 @@ const String kRequestPet = "$kListPets/request";
 const String kStatic = "$kBaseUrl/static";
 const String kHowTo = "$kStatic/how-to/";
 const String kHomeData = "$kStatic/homepage";
-const String kFirstSec = "/first-section";
-const String kSecondSec = "/second-section";
-const String kfooter = "/footer";
-const String kPetNeeds = "/pet-needs";
-
+const String kFirstSec = "$kHomeData/first-section";
+const String kSecondSec = "$kHomeData/second-section";
+const String kfooter = "$kHomeData/footer";
+const String kPetNeeds = "$kHomeData/pet-needs";

@@ -177,3 +177,12 @@ class Owner {
         "lastName": lastName,
     };
 }
+
+List<Pet> decodePetsFromJson(String data) =>
+    List<Pet>.from(
+      json.decode(data).map(
+            (pet) => Pet.fromJson(
+              pet,
+            ),
+          ),
+    );

@@ -38,21 +38,13 @@ class FirstContainer extends StatelessWidget {
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(300, 50),
-                    primary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Expanded(
-                        child: Padding(
+                        child: const Padding(
                           padding: EdgeInsets.only(left: 85),
-                          child: Text(
+                          child: const Text(
                             "Help them",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -61,11 +53,19 @@ class FirstContainer extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Icon(Icons.arrow_forward_ios_outlined,
+                      const Icon(Icons.arrow_forward_ios_outlined,
                         size: 20,
                         color: Colors.black,
                       )
                     ],
+                  ),
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(300, 50),
+                    primary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
                   ),
                 ),
               ],
