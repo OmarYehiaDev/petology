@@ -72,7 +72,9 @@ class _AdaptionScreenState extends State<AdaptionScreen> {
                             name: 'Hair Length', drop: filters.hairLength),
                         // SizedBox(width: 20,),
                         buildColumn(
-                            name: 'Care & Behavior', drop: filters.behaviour),
+                          name: 'Care & Behavior',
+                          drop: filters.behaviour,
+                        ),
                         //   SizedBox(width: 20,)
                       ],
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:petology/screens/home_screen.dart';
 import 'package:petology/screens/login_screen.dart';
 import 'package:petology/screens/request_screen.dart';
@@ -37,11 +38,11 @@ class _AppRootState extends State<AppRoot> {
         },
         child: Stack(
           children: [
-            const AdaptionScreen(),
-            // LoginScreen(),
+            // const AdaptionScreen(),
+            LoginScreen(),
             Positioned(
-              left: pointer.dx - 100,
-              top: pointer.dy - 100,
+              left: pointer.dx,
+              top: pointer.dy,
               child: Image.asset(
                 'assets/images/cursor.png',
                 height: 30,

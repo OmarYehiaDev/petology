@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:petology/screens/adaption_screen.dart';
 import 'package:petology/screens/home_screen.dart';
+import 'package:petology/screens/request_screen.dart';
 import 'package:petology/screens/sign_up_screen.dart';
 import 'package:petology/shared/footer.dart';
 import 'package:petology/utils/constants.dart';
 import 'package:petology/utils/navigation.dart';
-
-import 'package:url_launcher/url_launcher.dart';
-
 import '../services/api.dart';
-import 'dart:js' as js;
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   bool isSelected = false;
   final ApiService api = ApiService();
+  final TextEditingController emailCon = TextEditingController();
+  final TextEditingController passCon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,17 +36,31 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => HomeScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
                     'About us',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const AdaptionScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
                     'Categories',
                     style: TextStyle(
                       color: Colors.white,
@@ -54,29 +68,50 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => HomeScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
                     'Services',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
-                  child: Text(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const RequestScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text(
                     'Request',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 450,
                 ),
                 ElevatedButton(
-                  child: Text("Sign up"),
-                  onPressed: () {},
+                  child: const Text("Sign up"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const SignUpScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: isSelected ? Colors.brown : Colors.white,
                     onPrimary: !isSelected ? Colors.black : Colors.white,
@@ -85,17 +120,24 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 ElevatedButton(
-                  child: Text(
+                  child: const Text(
                     "Login",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => LoginScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: isSelected ? Colors.brown : Colors.white,
                     onPrimary: !isSelected ? Colors.black : Colors.white,
@@ -141,7 +183,7 @@ class LoginScreen extends StatelessWidget {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(
+                              const Text(
                                 'Login',
                                 style: TextStyle(
                                   color: Colors.brown,
@@ -149,14 +191,15 @@ class LoginScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               TextFormField(
-                                decoration: InputDecoration(
+                                controller: emailCon,
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
                                     ),
                                   ),
                                   labelText: 'Email',
@@ -168,15 +211,16 @@ class LoginScreen extends StatelessWidget {
                                   return null;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               TextFormField(
+                                controller: passCon,
                                 obscureText: true,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(10.0),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
                                     ),
                                   ),
                                   labelText: 'Password',
@@ -188,7 +232,7 @@ class LoginScreen extends StatelessWidget {
                                   return null;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               ElevatedButton(
@@ -199,22 +243,26 @@ class LoginScreen extends StatelessWidget {
                                     color: HexColor("#FFE3C5"),
                                   ),
                                 ),
-                                onPressed: () {
-                                  AppNavigator.customNavigator(
-                                    context: context,
-                                    screen: HomeScreen(),
-                                    finish: false,
-                                  );
+                                onPressed: () async {
+                                  String token = await api.loginUserWithEmail(
+                                      emailCon.text, passCon.text);
+                                  token.isNotEmpty
+                                      ? AppNavigator.customNavigator(
+                                          context: context,
+                                          screen: HomeScreen(),
+                                          finish: false,
+                                        )
+                                      : print("Failed");
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  fixedSize: Size(600, 50),
+                                  fixedSize: const Size(600, 50),
                                   primary: HexColor("492F24"),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(32.0),
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Container(
@@ -234,7 +282,7 @@ class LoginScreen extends StatelessWidget {
                                   child: new Container(
                                       margin: const EdgeInsets.only(
                                           left: 10, right: 15),
-                                      child: Divider(
+                                      child: const Divider(
                                         color: Colors.black,
                                         height: 50,
                                       )),
@@ -282,17 +330,16 @@ class LoginScreen extends StatelessWidget {
                                         onHover: (v) {},
                                         onPressed: () async {
                                           final result =
-                                                  await FlutterWebAuth
-                                                      .authenticate(
-                                                url: kAuthFacebook,
-                                                callbackUrlScheme: kFacebookCallback,
-                                              );
+                                              await FlutterWebAuth.authenticate(
+                                            url: kAuthFacebook,
+                                            callbackUrlScheme:
+                                                kFacebookCallback,
+                                          );
 
 // Extract token from resulting url
-                                              final token = Uri.parse(result)
-                                                      .queryParameters[
-                                                  'accessToken'];
-                                              print(token);
+                                          final token = Uri.parse(result)
+                                              .queryParameters['accessToken'];
+                                          print(token);
                                           // js.context.callMethod(
                                           //     "open", [kAuthFacebook]);
                                           // await launchUrl(Uri.parse(kAuthFacebook),);
@@ -356,7 +403,8 @@ class LoginScreen extends StatelessWidget {
                                                   await FlutterWebAuth
                                                       .authenticate(
                                                 url: kAuthGoogle,
-                                                callbackUrlScheme: kGoogleCallback,
+                                                callbackUrlScheme:
+                                                    kGoogleCallback,
                                               );
 
 // Extract token from resulting url
@@ -392,7 +440,7 @@ class LoginScreen extends StatelessWidget {
                                 onPressed: () {
                                   AppNavigator.customNavigator(
                                     context: context,
-                                    screen: SignUpScreen(),
+                                    screen: const SignUpScreen(),
                                     finish: false,
                                   );
                                 },
@@ -411,10 +459,10 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Footer(),
+              const Footer(),
             ],
           ),
         ),
