@@ -3,6 +3,8 @@ import 'package:petology/screens/home_screen.dart';
 import 'package:petology/screens/login_screen.dart';
 import 'package:petology/screens/request_screen.dart';
 
+import '../screens/adaption_screen.dart';
+
 class AppRoot extends StatefulWidget {
   const AppRoot({Key? key}) : super(key: key);
 
@@ -35,7 +37,7 @@ class _AppRootState extends State<AppRoot> {
         },
         child: Stack(
           children: [
-            HomeScreen(),
+            const AdaptionScreen(),
             // LoginScreen(),
             Positioned(
               left: pointer.dx,

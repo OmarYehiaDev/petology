@@ -5,6 +5,9 @@ import 'package:petology/shared/appbar_components.dart';
 import 'package:petology/shared/default_drop_down.dart';
 import 'package:petology/shared/footer.dart';
 
+import '../models/filters.dart';
+import '../services/api.dart';
+
 class AdaptionScreen extends StatefulWidget {
   const AdaptionScreen({Key? key}) : super(key: key);
 
@@ -13,6 +16,7 @@ class AdaptionScreen extends StatefulWidget {
 }
 
 class _AdaptionScreenState extends State<AdaptionScreen> {
+  final ApiService api = ApiService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,67 +25,87 @@ class _AdaptionScreenState extends State<AdaptionScreen> {
         preferredSize: Size(double.infinity, 50),
         child: AppBarComponents(),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 50),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: FutureBuilder<Filters>(
+        future: api.getPetFiltersByCategory(1),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            Filters filters = snapshot.data!;
+            return SingleChildScrollView(
+              child: Column(
                 children: [
-                  buildColumn(
-                    name: 'Bread',
-                    drop: ['1', '2', '3'],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 25, horizontal: 50),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildColumn(
+                          name: 'Bread',
+                          drop: filters.breed,
+                        ),
+                        buildColumn(name: 'Age', drop: filters.ages),
+                        buildColumn(name: 'Size', drop: filters.size),
+                        buildColumn(
+                          name: 'Good with',
+                          drop: filters.goodWith,
+                        ),
+                      ],
+                    ),
                   ),
-                  buildColumn(name: 'Age', drop: ['4', '5', '6']),
-                  buildColumn(name: 'Size', drop: ['7', '8', '9']),
-                  buildColumn(name: 'Good with', drop: ['10', '11', '12']),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 25, horizontal: 50),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildColumn(name: 'Gender', drop: [
+                          filters.gender.male.toString(),
+                          filters.gender.female.toString()
+                        ]),
+                        //SizedBox(width: 20,),
+                        buildColumn(name: 'Color', drop: filters.colors),
+                        //  SizedBox(width: 20,),
+                        buildColumn(
+                            name: 'Hair Length', drop: filters.hairLength),
+                        // SizedBox(width: 20,),
+                        buildColumn(
+                            name: 'Care & Behavior', drop: filters.behaviour),
+                        //   SizedBox(width: 20,)
+                      ],
+                    ),
+                  ),
+                  const FirstContainerAdaptation(),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  const FirstContainerAdaptation(),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Show more...',
+                        style: TextStyle(
+                          color: HexColor('#492F24'),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Footer(),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 50),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  buildColumn(name: 'Gender', drop: ['Male', 'Female']),
-                  //SizedBox(width: 20,),
-                  buildColumn(name: 'Color', drop: ['grey', 'black', 'white']),
-                  //  SizedBox(width: 20,),
-                  buildColumn(name: 'Hair Length', drop: ['19', '20', '21']),
-                  // SizedBox(width: 20,),
-                  buildColumn(
-                      name: 'Care & Behavior', drop: ['22', '23', '24']),
-                  //   SizedBox(width: 20,)
-                ],
-              ),
-            ),
-            const FirstContainerAdaptation(),
-            const SizedBox(
-              height: 60,
-            ),
-            const FirstContainerAdaptation(),
-            const SizedBox(
-              height: 30,
-            ),
-            TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Show more...',
-                  style: TextStyle(
-                    color: HexColor('#492F24'),
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-            const SizedBox(
-              height: 10,
-            ),
-            const Footer(),
-          ],
-        ),
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
